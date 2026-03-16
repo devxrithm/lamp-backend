@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import { Marks } from "../../types/types";
+import { PrismaClient } from "@prisma/client/extension";
 
 export const uploadMarks = (req: Request<"", "", Marks>, res: Response) => {
   try {
@@ -12,7 +13,7 @@ export const uploadMarks = (req: Request<"", "", Marks>, res: Response) => {
       functionality,
       problemRelevance,
       feasibility,
-    } = req.body;
+    } = req.body;   
 
     //save into Database
     res.status(200).json({ message: "Marks uploaded successfully" });

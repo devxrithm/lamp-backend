@@ -7,4 +7,5 @@ export interface Marks {
   functionality: number;
   problemRelevance: number;
   feasibility: number;
+  totalMarks?: number;
 }

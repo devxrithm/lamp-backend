@@ -11,3 +11,16 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Team {
+  teamId              Int    @id
+  teamName            String @unique
+  innovationMarks     Int
+  technicalComplexity Int
+  presentation        Int
+  impact              Int
+  functionality       Int
+  problemRelevance    Int
+  feasibility         Int
+  totalMarks          Int
+}
