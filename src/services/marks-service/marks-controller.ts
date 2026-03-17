@@ -17,31 +17,30 @@ export const uploadMarks = async (
       feasibility,
     } = req.body;
 
+    const marks = {
+      innovationMarks: Number(innovationMarks),
+      technicalComplexity: Number(technicalComplexity),
+      presentation: Number(presentation),
+      impact: Number(impact),
+      functionality: Number(functionality),
+      problemRelevance: Number(problemRelevance),
+      feasibility: Number(feasibility),
+    };
+
+    const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
+
     await prisma.team.create({
       data: {
         teamId: 5214,
         teamName: "ukcoders-07",
-        innovationMarks,
-        technicalComplexity,
-        presentation,
-        impact,
-        functionality,
-        problemRelevance,
-        feasibility,
-        totalMarks:
-          innovationMarks +
-          technicalComplexity +
-          presentation +
-          impact +
-          functionality +
-          problemRelevance +
-          feasibility,
+        ...marks,
+        totalMarks,
       },
     });
 
-    res.status(200).json({ message: "Marks uploaded successfully" });
+    return res.status(200).json({ message: "Marks uploaded successfully" });
   } catch (error) {
     console.log("Error uploading marks:", error);
-    res.status(400).json({ error: "Invalid request body" });
+    return res.status(500).json({ error: "Internal server error" }); // ✅ 500, not 400
   }
 };

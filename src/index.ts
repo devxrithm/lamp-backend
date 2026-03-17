@@ -18,10 +18,9 @@ app.use(cookieParser());
 app.use("/", router);
 //routes
 app.get("/", (req, res) => {
-  res.send(`Hello this is ukcode07!`);
+  res.send("`Hello this is ukcode07!`");
 });
 
-const port = parseInt(process.env.PORT || "8080");
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+app.listen(3000, () => {
+  console.log(`listening on port 3000`);
 });
