@@ -18,11 +18,10 @@ app.use(cookieParser());
 app.use("/", router);
 //routes
 app.get("/", (req, res) => {
-  const name = process.env.NAME || "World";
-  res.send(`Hello ${name}!`);
+  res.send(`Hello this is ukcode07!`);
 });
 
-const port = parseInt(process.env.PORT || "3000");
+const port = parseInt(process.env.PORT || "8080");
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
