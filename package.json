@@ -3,8 +3,7 @@
   "description": "Simple api sample in Node",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "main": "index.js",
+    "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
