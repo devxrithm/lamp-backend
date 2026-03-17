@@ -41,6 +41,6 @@ export const uploadMarks = async (
     return res.status(200).json({ message: "Marks uploaded successfully" });
   } catch (error) {
     console.log("Error uploading marks:", error);
-    return res.status(500).json({ error: "Internal server error" }); // ✅ 500, not 400
+    return res.status(500).json({ error: "Internal server error" });
   }
 };
