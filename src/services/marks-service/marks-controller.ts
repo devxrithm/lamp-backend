@@ -1,12 +1,14 @@
 import { Response, Request } from "express";
 import { Marks } from "../../types/types";
-import { prisma } from "../../lib/prisma";
+import { getPrisma } from "../../lib/prisma";
 
 export const uploadMarks = async (
   req: Request<"", "", Marks>,
   res: Response,
 ) => {
   try {
+    const prisma = getPrisma();
+
     const {
       innovationMarks,
       technicalComplexity,
