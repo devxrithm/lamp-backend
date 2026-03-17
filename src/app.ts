@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 
-app.use("/", router);
+app.use("/api", router);
 app.get("/", (_req, res) => {
   res.send("`Hello this is ukcode07!`");
 });
