@@ -31,7 +31,7 @@ export const uploadMarks = async (
 
     const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
 
-    await prisma.team.create({
+    const data = await prisma.team.create({
       data: {
         teamId: 5214,
         teamName: "ukcoders-07",
@@ -39,7 +39,7 @@ export const uploadMarks = async (
         totalMarks,
       },
     });
-
+    console.log("Marks uploaded successfully:", data);
     return res.status(200).json({ message: "Marks uploaded successfully" });
   } catch (error) {
     console.log("Error uploading marks:", error);
