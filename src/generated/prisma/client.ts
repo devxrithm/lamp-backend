@@ -29,8 +29,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Teams
- * const teams = await prisma.team.findMany()
+ * // Fetch zero or more MentorTeams
+ * const mentorTeams = await prisma.mentorTeams.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,7 +40,7 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Team
+ * Model mentorTeams
  * 
  */
-export type Team = Prisma.TeamModel
+export type mentorTeams = Prisma.mentorTeamsModel

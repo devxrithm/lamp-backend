@@ -17,10 +17,10 @@ import type * as Prisma from "./prismaNamespace"
 
 const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
-  "clientVersion": "7.5.0",
-  "engineVersion": "280c870be64f457428992c43c1f6d557fab6e29e",
+  "clientVersion": "7.6.0",
+  "engineVersion": "75cbdc1eb7150937890ad5465d861175c6624711",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Team {\n  teamId              Int    @id\n  teamName            String @unique\n  innovationMarks     Int\n  technicalComplexity Int\n  presentation        Int\n  impact              Int\n  functionality       Int\n  problemRelevance    Int\n  feasibility         Int\n  totalMarks          Int\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel mentorTeams {\n  teamId              Int    @id\n  teamName            String @unique\n  presentation        Int\n  innovationMarks     Int\n  technicalComplexity Int\n  marketFeasibility   Int\n  futureScope         Int\n  totalMarks          Int\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -32,10 +32,10 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Team\":{\"fields\":[{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"teamName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"innovationMarks\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"technicalComplexity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"presentation\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"impact\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"functionality\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"problemRelevance\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"feasibility\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"totalMarks\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"mentorTeams\":{\"fields\":[{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"teamName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"presentation\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"innovationMarks\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"technicalComplexity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"marketFeasibility\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"futureScope\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"totalMarks\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 config.parameterizationSchema = {
-  strings: JSON.parse("[\"where\",\"Team.findUnique\",\"Team.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"Team.findFirst\",\"Team.findFirstOrThrow\",\"Team.findMany\",\"data\",\"Team.createOne\",\"Team.createMany\",\"Team.createManyAndReturn\",\"Team.updateOne\",\"Team.updateMany\",\"Team.updateManyAndReturn\",\"create\",\"update\",\"Team.upsertOne\",\"Team.deleteOne\",\"Team.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"Team.groupBy\",\"Team.aggregate\",\"AND\",\"OR\",\"NOT\",\"teamId\",\"teamName\",\"innovationMarks\",\"technicalComplexity\",\"presentation\",\"impact\",\"functionality\",\"problemRelevance\",\"feasibility\",\"totalMarks\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"contains\",\"startsWith\",\"endsWith\",\"not\",\"set\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
-  graph: "KwsQDRwAACIAMB0AAAQAEB4AACIAMB8CAAAAASABAAAAASECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIScCACMAISgCACMAIQEAAAABACABAAAAAQAgDRwAACIAMB0AAAQAEB4AACIAMB8CACMAISABACQAISECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIScCACMAISgCACMAIQADAAAABAAgAwAABQAwBAAAAQAgAwAAAAQAIAMAAAUAMAQAAAEAIAMAAAAEACADAAAFADAEAAABACAKHwIAAAABIAEAAAABIQIAAAABIgIAAAABIwIAAAABJAIAAAABJQIAAAABJgIAAAABJwIAAAABKAIAAAABAQgAAAkAIAofAgAAAAEgAQAAAAEhAgAAAAEiAgAAAAEjAgAAAAEkAgAAAAElAgAAAAEmAgAAAAEnAgAAAAEoAgAAAAEBCAAACwAwAQgAAAsAMAofAgAqACEgAQArACEhAgAqACEiAgAqACEjAgAqACEkAgAqACElAgAqACEmAgAqACEnAgAqACEoAgAqACECAAAAAQAgCAAADgAgCh8CACoAISABACsAISECACoAISICACoAISMCACoAISQCACoAISUCACoAISYCACoAIScCACoAISgCACoAIQIAAAAEACAIAAAQACACAAAABAAgCAAAEAAgAwAAAAEAIA8AAAkAIBAAAA4AIAEAAAABACABAAAABAAgBRUAACUAIBYAACYAIBcAACkAIBgAACgAIBkAACcAIA0cAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEhAgAbACEiAgAbACEjAgAbACEkAgAbACElAgAbACEmAgAbACEnAgAbACEoAgAbACEDAAAABAAgAwAAFgAwFAAAFwAgAwAAAAQAIAMAAAUAMAQAAAEAIA0cAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEhAgAbACEiAgAbACEjAgAbACEkAgAbACElAgAbACEmAgAbACEnAgAbACEoAgAbACENFQAAHgAgFgAAIQAgFwAAHgAgGAAAHgAgGQAAHgAgKQIAAAABKgIAAAAEKwIAAAAELAIAAAABLQIAAAABLgIAAAABLwIAAAABMwIAIAAhDhUAAB4AIBgAAB8AIBkAAB8AICkBAAAAASoBAAAABCsBAAAABCwBAAAAAS0BAAAAAS4BAAAAAS8BAAAAATABAAAAATEBAAAAATIBAAAAATMBAB0AIQ4VAAAeACAYAAAfACAZAAAfACApAQAAAAEqAQAAAAQrAQAAAAQsAQAAAAEtAQAAAAEuAQAAAAEvAQAAAAEwAQAAAAExAQAAAAEyAQAAAAEzAQAdACEIKQIAAAABKgIAAAAEKwIAAAAELAIAAAABLQIAAAABLgIAAAABLwIAAAABMwIAHgAhCykBAAAAASoBAAAABCsBAAAABCwBAAAAAS0BAAAAAS4BAAAAAS8BAAAAATABAAAAATEBAAAAATIBAAAAATMBAB8AIQ0VAAAeACAWAAAhACAXAAAeACAYAAAeACAZAAAeACApAgAAAAEqAgAAAAQrAgAAAAQsAgAAAAEtAgAAAAEuAgAAAAEvAgAAAAEzAgAgACEIKQgAAAABKggAAAAEKwgAAAAELAgAAAABLQgAAAABLggAAAABLwgAAAABMwgAIQAhDRwAACIAMB0AAAQAEB4AACIAMB8CACMAISABACQAISECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIScCACMAISgCACMAIQgpAgAAAAEqAgAAAAQrAgAAAAQsAgAAAAEtAgAAAAEuAgAAAAEvAgAAAAEzAgAeACELKQEAAAABKgEAAAAEKwEAAAAELAEAAAABLQEAAAABLgEAAAABLwEAAAABMAEAAAABMQEAAAABMgEAAAABMwEAHwAhAAAAAAAFNAIAAAABNQIAAAABNgIAAAABNwIAAAABOAIAAAABATQBAAAAAQAAAAAFFQAGFgAHFwAIGAAJGQAKAAAAAAAFFQAGFgAHFwAIGAAJGQAKAQIBAgMBBQYBBgcBBwgBCQoBCgwCCw0DDA8BDRECDhIEERMBEhQBExUCGhgFGxkL"
+  strings: JSON.parse("[\"where\",\"mentorTeams.findUnique\",\"mentorTeams.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"mentorTeams.findFirst\",\"mentorTeams.findFirstOrThrow\",\"mentorTeams.findMany\",\"data\",\"mentorTeams.createOne\",\"mentorTeams.createMany\",\"mentorTeams.createManyAndReturn\",\"mentorTeams.updateOne\",\"mentorTeams.updateMany\",\"mentorTeams.updateManyAndReturn\",\"create\",\"update\",\"mentorTeams.upsertOne\",\"mentorTeams.deleteOne\",\"mentorTeams.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"mentorTeams.groupBy\",\"mentorTeams.aggregate\",\"AND\",\"OR\",\"NOT\",\"teamId\",\"teamName\",\"presentation\",\"innovationMarks\",\"technicalComplexity\",\"marketFeasibility\",\"futureScope\",\"totalMarks\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"contains\",\"startsWith\",\"endsWith\",\"not\",\"set\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
+  graph: "KwsQCxwAACIAMB0AAAQAEB4AACIAMB8CAAAAASABAAAAASECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIQEAAAABACABAAAAAQAgCxwAACIAMB0AAAQAEB4AACIAMB8CACMAISABACQAISECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIQADAAAABAAgAwAABQAwBAAAAQAgAwAAAAQAIAMAAAUAMAQAAAEAIAMAAAAEACADAAAFADAEAAABACAIHwIAAAABIAEAAAABIQIAAAABIgIAAAABIwIAAAABJAIAAAABJQIAAAABJgIAAAABAQgAAAkAIAgfAgAAAAEgAQAAAAEhAgAAAAEiAgAAAAEjAgAAAAEkAgAAAAElAgAAAAEmAgAAAAEBCAAACwAwAQgAAAsAMAgfAgAqACEgAQArACEhAgAqACEiAgAqACEjAgAqACEkAgAqACElAgAqACEmAgAqACECAAAAAQAgCAAADgAgCB8CACoAISABACsAISECACoAISICACoAISMCACoAISQCACoAISUCACoAISYCACoAIQIAAAAEACAIAAAQACACAAAABAAgCAAAEAAgAwAAAAEAIA8AAAkAIBAAAA4AIAEAAAABACABAAAABAAgBRUAACUAIBYAACYAIBcAACkAIBgAACgAIBkAACcAIAscAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEhAgAbACEiAgAbACEjAgAbACEkAgAbACElAgAbACEmAgAbACEDAAAABAAgAwAAFgAwFAAAFwAgAwAAAAQAIAMAAAUAMAQAAAEAIAscAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEhAgAbACEiAgAbACEjAgAbACEkAgAbACElAgAbACEmAgAbACENFQAAHgAgFgAAIQAgFwAAHgAgGAAAHgAgGQAAHgAgJwIAAAABKAIAAAAEKQIAAAAEKgIAAAABKwIAAAABLAIAAAABLQIAAAABMQIAIAAhDhUAAB4AIBgAAB8AIBkAAB8AICcBAAAAASgBAAAABCkBAAAABCoBAAAAASsBAAAAASwBAAAAAS0BAAAAAS4BAAAAAS8BAAAAATABAAAAATEBAB0AIQ4VAAAeACAYAAAfACAZAAAfACAnAQAAAAEoAQAAAAQpAQAAAAQqAQAAAAErAQAAAAEsAQAAAAEtAQAAAAEuAQAAAAEvAQAAAAEwAQAAAAExAQAdACEIJwIAAAABKAIAAAAEKQIAAAAEKgIAAAABKwIAAAABLAIAAAABLQIAAAABMQIAHgAhCycBAAAAASgBAAAABCkBAAAABCoBAAAAASsBAAAAASwBAAAAAS0BAAAAAS4BAAAAAS8BAAAAATABAAAAATEBAB8AIQ0VAAAeACAWAAAhACAXAAAeACAYAAAeACAZAAAeACAnAgAAAAEoAgAAAAQpAgAAAAQqAgAAAAErAgAAAAEsAgAAAAEtAgAAAAExAgAgACEIJwgAAAABKAgAAAAEKQgAAAAEKggAAAABKwgAAAABLAgAAAABLQgAAAABMQgAIQAhCxwAACIAMB0AAAQAEB4AACIAMB8CACMAISABACQAISECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIQgnAgAAAAEoAgAAAAQpAgAAAAQqAgAAAAErAgAAAAEsAgAAAAEtAgAAAAExAgAeACELJwEAAAABKAEAAAAEKQEAAAAEKgEAAAABKwEAAAABLAEAAAABLQEAAAABLgEAAAABLwEAAAABMAEAAAABMQEAHwAhAAAAAAAFMgIAAAABMwIAAAABNAIAAAABNQIAAAABNgIAAAABATIBAAAAAQAAAAAFFQAGFgAHFwAIGAAJGQAKAAAAAAAFFQAGFgAHFwAIGAAJGQAKAQIBAgMBBQYBBgcBBwgBCQoBCgwCCw0DDA8BDRECDhIEERMBEhQBExUCGhgFGxkL"
 }
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
@@ -70,8 +70,8 @@ export interface PrismaClientConstructor {
    * const prisma = new PrismaClient({
    *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
    * })
-   * // Fetch zero or more Teams
-   * const teams = await prisma.team.findMany()
+   * // Fetch zero or more MentorTeams
+   * const mentorTeams = await prisma.mentorTeams.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -94,8 +94,8 @@ export interface PrismaClientConstructor {
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Teams
- * const teams = await prisma.team.findMany()
+ * // Fetch zero or more MentorTeams
+ * const mentorTeams = await prisma.mentorTeams.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -189,14 +189,14 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.team`: Exposes CRUD operations for the **Team** model.
+   * `prisma.mentorTeams`: Exposes CRUD operations for the **mentorTeams** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Teams
-    * const teams = await prisma.team.findMany()
+    * // Fetch zero or more MentorTeams
+    * const mentorTeams = await prisma.mentorTeams.findMany()
     * ```
     */
-  get team(): Prisma.TeamDelegate<ExtArgs, { omit: OmitOpts }>;
+  get mentorTeams(): Prisma.mentorTeamsDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

@@ -8,5 +8,5 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Team'
+export type * from './models/mentorTeams'
 export type * from './commonInputTypes'

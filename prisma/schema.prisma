@@ -1,7 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
   provider = "prisma-client"
@@ -12,15 +9,13 @@ datasource db {
   provider = "postgresql"
 }
 
-model Team {
+model mentorTeams {
   teamId              Int    @id
   teamName            String @unique
+  presentation        Int
   innovationMarks     Int
   technicalComplexity Int
-  presentation        Int
-  impact              Int
-  functionality       Int
-  problemRelevance    Int
-  feasibility         Int
+  marketFeasibility   Int
+  futureScope         Int
   totalMarks          Int
 }

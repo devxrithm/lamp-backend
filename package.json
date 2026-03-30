@@ -3,7 +3,7 @@
   "description": "Simple api sample in Node",
   "version": "1.0.0",
   "private": true,
-    "main": "index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && tsc",
@@ -12,8 +12,8 @@
   "author": "Ujjwal Katiyar",
   "license": "Apache-2.0",
   "dependencies": {
-    "@prisma/adapter-pg": "^7.5.0",
-    "@prisma/client": "^7.5.0",
+    "@prisma/adapter-pg": "^7.6.0",
+    "@prisma/client": "^7.6.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "express": "^4.21.2",
@@ -24,10 +24,10 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^20.12.12",
-    "@types/pg": "^8.18.0",
+    "@types/pg": "^8.20.0",
     "dotenv": "^17.3.1",
     "nodemon": "^3.1.0",
-    "prisma": "^7.5.0",
+    "prisma": "^7.6.0",
     "tsx": "^4.21.0",
     "typescript": "^5.4.5"
   }
