@@ -1,11 +1,10 @@
 export interface Marks {
+  teamId:number,
   teamName: string;
+  presentation: number;
   innovationMarks: number;
   technicalComplexity: number;
-  presentation: number;
-  impact: number;
-  functionality: number;
-  problemRelevance: number;
-  feasibility: number;
+  marketFeasibility: number;
+  futureScope: number;
   totalMarks?: number;
 }

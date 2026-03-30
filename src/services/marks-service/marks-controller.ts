@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 import { Marks } from "../../types/types";
 import { getPrisma } from "../../lib/prisma";
 
-export const uploadMarks = async (
+export const mentorUploadMarks = async (
   req: Request<"", "", Marks>,
   res: Response,
 ) => {
@@ -10,31 +10,29 @@ export const uploadMarks = async (
     const prisma = getPrisma();
 
     const {
+      teamId,
+      teamName,
+      presentation,
       innovationMarks,
       technicalComplexity,
-      presentation,
-      impact,
-      functionality,
-      problemRelevance,
-      feasibility,
+      marketFeasibility,
+      futureScope,
     } = req.body;
 
     const marks = {
       innovationMarks: Number(innovationMarks),
       technicalComplexity: Number(technicalComplexity),
       presentation: Number(presentation),
-      impact: Number(impact),
-      functionality: Number(functionality),
-      problemRelevance: Number(problemRelevance),
-      feasibility: Number(feasibility),
+      marketFeasibility: Number(marketFeasibility),
+      futureScope: Number(futureScope),
     };
 
     const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
 
-    const data = await prisma.team.create({
+    const data = await prisma.mentorTeams.create({
       data: {
-        teamId: 5214,
-        teamName: "ukcoders-07",
+        teamId,
+        teamName,
         ...marks,
         totalMarks,
       },

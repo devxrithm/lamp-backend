@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { uploadMarks } from "./marks-controller";
+import { mentorUploadMarks } from "./marks-controller";
 
 const router = Router();
 
-router.post("/upload-marks", uploadMarks);
+router.post("/upload-marks", mentorUploadMarks);
 
 export default router;
