@@ -3,7 +3,7 @@ import { Marks } from "../../types/types";
 import { getPrisma } from "../../lib/prisma";
 
 export const mentorUploadMarks = async (
-  req: Request<"", "", Marks>,
+  req: Request<any, any, Marks>,
   res: Response,
 ) => {
   try {
@@ -29,7 +29,7 @@ export const mentorUploadMarks = async (
 
     const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
 
-    const data = await prisma.mentorTeams.create({
+    const data = await prisma.onlineRound.create({
       data: {
         teamId,
         teamName,

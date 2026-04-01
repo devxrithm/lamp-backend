@@ -51,7 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  mentorTeams: 'mentorTeams'
+  onlineRound: 'onlineRound'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,7 +70,7 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MentorTeamsScalarFieldEnum = {
+export const OnlineRoundScalarFieldEnum = {
   teamId: 'teamId',
   teamName: 'teamName',
   presentation: 'presentation',
@@ -81,7 +81,7 @@ export const MentorTeamsScalarFieldEnum = {
   totalMarks: 'totalMarks'
 } as const
 
-export type MentorTeamsScalarFieldEnum = (typeof MentorTeamsScalarFieldEnum)[keyof typeof MentorTeamsScalarFieldEnum]
+export type OnlineRoundScalarFieldEnum = (typeof OnlineRoundScalarFieldEnum)[keyof typeof OnlineRoundScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -13,6 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 
+import authRouter from "./services/auth-service/auth-routes";
+
+app.use("/api/auth", authRouter);
 app.use("/api", router);
 app.get("/", (_req, res) => {
   res.send("`Hello this is ukcode07!`");

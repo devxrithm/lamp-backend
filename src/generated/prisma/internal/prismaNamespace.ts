@@ -384,7 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  mentorTeams: 'mentorTeams'
+  onlineRound: 'onlineRound'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,81 +400,81 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "mentorTeams"
+    modelProps: "onlineRound"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    mentorTeams: {
-      payload: Prisma.$mentorTeamsPayload<ExtArgs>
-      fields: Prisma.mentorTeamsFieldRefs
+    onlineRound: {
+      payload: Prisma.$onlineRoundPayload<ExtArgs>
+      fields: Prisma.onlineRoundFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.mentorTeamsFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload> | null
+          args: Prisma.onlineRoundFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.mentorTeamsFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>
+          args: Prisma.onlineRoundFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>
         }
         findFirst: {
-          args: Prisma.mentorTeamsFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload> | null
+          args: Prisma.onlineRoundFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.mentorTeamsFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>
+          args: Prisma.onlineRoundFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>
         }
         findMany: {
-          args: Prisma.mentorTeamsFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>[]
+          args: Prisma.onlineRoundFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>[]
         }
         create: {
-          args: Prisma.mentorTeamsCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>
+          args: Prisma.onlineRoundCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>
         }
         createMany: {
-          args: Prisma.mentorTeamsCreateManyArgs<ExtArgs>
+          args: Prisma.onlineRoundCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.mentorTeamsCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>[]
+          args: Prisma.onlineRoundCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>[]
         }
         delete: {
-          args: Prisma.mentorTeamsDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>
+          args: Prisma.onlineRoundDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>
         }
         update: {
-          args: Prisma.mentorTeamsUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>
+          args: Prisma.onlineRoundUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>
         }
         deleteMany: {
-          args: Prisma.mentorTeamsDeleteManyArgs<ExtArgs>
+          args: Prisma.onlineRoundDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.mentorTeamsUpdateManyArgs<ExtArgs>
+          args: Prisma.onlineRoundUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.mentorTeamsUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>[]
+          args: Prisma.onlineRoundUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>[]
         }
         upsert: {
-          args: Prisma.mentorTeamsUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$mentorTeamsPayload>
+          args: Prisma.onlineRoundUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$onlineRoundPayload>
         }
         aggregate: {
-          args: Prisma.MentorTeamsAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMentorTeams>
+          args: Prisma.OnlineRoundAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOnlineRound>
         }
         groupBy: {
-          args: Prisma.mentorTeamsGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MentorTeamsGroupByOutputType>[]
+          args: Prisma.onlineRoundGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OnlineRoundGroupByOutputType>[]
         }
         count: {
-          args: Prisma.mentorTeamsCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MentorTeamsCountAggregateOutputType> | number
+          args: Prisma.onlineRoundCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OnlineRoundCountAggregateOutputType> | number
         }
       }
     }
@@ -517,7 +517,7 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MentorTeamsScalarFieldEnum = {
+export const OnlineRoundScalarFieldEnum = {
   teamId: 'teamId',
   teamName: 'teamName',
   presentation: 'presentation',
@@ -528,7 +528,7 @@ export const MentorTeamsScalarFieldEnum = {
   totalMarks: 'totalMarks'
 } as const
 
-export type MentorTeamsScalarFieldEnum = (typeof MentorTeamsScalarFieldEnum)[keyof typeof MentorTeamsScalarFieldEnum]
+export type OnlineRoundScalarFieldEnum = (typeof OnlineRoundScalarFieldEnum)[keyof typeof OnlineRoundScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -689,7 +689,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  mentorTeams?: Prisma.mentorTeamsOmit
+  onlineRound?: Prisma.onlineRoundOmit
 }
 
 /* Types for Logging */

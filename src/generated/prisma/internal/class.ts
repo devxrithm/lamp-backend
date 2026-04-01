@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.6.0",
   "engineVersion": "75cbdc1eb7150937890ad5465d861175c6624711",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel mentorTeams {\n  teamId              Int    @id\n  teamName            String @unique\n  presentation        Int\n  innovationMarks     Int\n  technicalComplexity Int\n  marketFeasibility   Int\n  futureScope         Int\n  totalMarks          Int\n}\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel onlineRound {\n  teamId              Int    @id\n  teamName            String @unique\n  presentation        Int\n  innovationMarks     Int\n  technicalComplexity Int\n  marketFeasibility   Int\n  futureScope         Int\n  totalMarks          Int\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -32,9 +32,9 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"mentorTeams\":{\"fields\":[{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"teamName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"presentation\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"innovationMarks\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"technicalComplexity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"marketFeasibility\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"futureScope\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"totalMarks\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"onlineRound\":{\"fields\":[{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"teamName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"presentation\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"innovationMarks\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"technicalComplexity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"marketFeasibility\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"futureScope\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"totalMarks\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 config.parameterizationSchema = {
-  strings: JSON.parse("[\"where\",\"mentorTeams.findUnique\",\"mentorTeams.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"mentorTeams.findFirst\",\"mentorTeams.findFirstOrThrow\",\"mentorTeams.findMany\",\"data\",\"mentorTeams.createOne\",\"mentorTeams.createMany\",\"mentorTeams.createManyAndReturn\",\"mentorTeams.updateOne\",\"mentorTeams.updateMany\",\"mentorTeams.updateManyAndReturn\",\"create\",\"update\",\"mentorTeams.upsertOne\",\"mentorTeams.deleteOne\",\"mentorTeams.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"mentorTeams.groupBy\",\"mentorTeams.aggregate\",\"AND\",\"OR\",\"NOT\",\"teamId\",\"teamName\",\"presentation\",\"innovationMarks\",\"technicalComplexity\",\"marketFeasibility\",\"futureScope\",\"totalMarks\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"contains\",\"startsWith\",\"endsWith\",\"not\",\"set\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
+  strings: JSON.parse("[\"where\",\"onlineRound.findUnique\",\"onlineRound.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"onlineRound.findFirst\",\"onlineRound.findFirstOrThrow\",\"onlineRound.findMany\",\"data\",\"onlineRound.createOne\",\"onlineRound.createMany\",\"onlineRound.createManyAndReturn\",\"onlineRound.updateOne\",\"onlineRound.updateMany\",\"onlineRound.updateManyAndReturn\",\"create\",\"update\",\"onlineRound.upsertOne\",\"onlineRound.deleteOne\",\"onlineRound.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"onlineRound.groupBy\",\"onlineRound.aggregate\",\"AND\",\"OR\",\"NOT\",\"teamId\",\"teamName\",\"presentation\",\"innovationMarks\",\"technicalComplexity\",\"marketFeasibility\",\"futureScope\",\"totalMarks\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"contains\",\"startsWith\",\"endsWith\",\"not\",\"set\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
   graph: "KwsQCxwAACIAMB0AAAQAEB4AACIAMB8CAAAAASABAAAAASECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIQEAAAABACABAAAAAQAgCxwAACIAMB0AAAQAEB4AACIAMB8CACMAISABACQAISECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIQADAAAABAAgAwAABQAwBAAAAQAgAwAAAAQAIAMAAAUAMAQAAAEAIAMAAAAEACADAAAFADAEAAABACAIHwIAAAABIAEAAAABIQIAAAABIgIAAAABIwIAAAABJAIAAAABJQIAAAABJgIAAAABAQgAAAkAIAgfAgAAAAEgAQAAAAEhAgAAAAEiAgAAAAEjAgAAAAEkAgAAAAElAgAAAAEmAgAAAAEBCAAACwAwAQgAAAsAMAgfAgAqACEgAQArACEhAgAqACEiAgAqACEjAgAqACEkAgAqACElAgAqACEmAgAqACECAAAAAQAgCAAADgAgCB8CACoAISABACsAISECACoAISICACoAISMCACoAISQCACoAISUCACoAISYCACoAIQIAAAAEACAIAAAQACACAAAABAAgCAAAEAAgAwAAAAEAIA8AAAkAIBAAAA4AIAEAAAABACABAAAABAAgBRUAACUAIBYAACYAIBcAACkAIBgAACgAIBkAACcAIAscAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEhAgAbACEiAgAbACEjAgAbACEkAgAbACElAgAbACEmAgAbACEDAAAABAAgAwAAFgAwFAAAFwAgAwAAAAQAIAMAAAUAMAQAAAEAIAscAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEhAgAbACEiAgAbACEjAgAbACEkAgAbACElAgAbACEmAgAbACENFQAAHgAgFgAAIQAgFwAAHgAgGAAAHgAgGQAAHgAgJwIAAAABKAIAAAAEKQIAAAAEKgIAAAABKwIAAAABLAIAAAABLQIAAAABMQIAIAAhDhUAAB4AIBgAAB8AIBkAAB8AICcBAAAAASgBAAAABCkBAAAABCoBAAAAASsBAAAAASwBAAAAAS0BAAAAAS4BAAAAAS8BAAAAATABAAAAATEBAB0AIQ4VAAAeACAYAAAfACAZAAAfACAnAQAAAAEoAQAAAAQpAQAAAAQqAQAAAAErAQAAAAEsAQAAAAEtAQAAAAEuAQAAAAEvAQAAAAEwAQAAAAExAQAdACEIJwIAAAABKAIAAAAEKQIAAAAEKgIAAAABKwIAAAABLAIAAAABLQIAAAABMQIAHgAhCycBAAAAASgBAAAABCkBAAAABCoBAAAAASsBAAAAASwBAAAAAS0BAAAAAS4BAAAAAS8BAAAAATABAAAAATEBAB8AIQ0VAAAeACAWAAAhACAXAAAeACAYAAAeACAZAAAeACAnAgAAAAEoAgAAAAQpAgAAAAQqAgAAAAErAgAAAAEsAgAAAAEtAgAAAAExAgAgACEIJwgAAAABKAgAAAAEKQgAAAAEKggAAAABKwgAAAABLAgAAAABLQgAAAABMQgAIQAhCxwAACIAMB0AAAQAEB4AACIAMB8CACMAISABACQAISECACMAISICACMAISMCACMAISQCACMAISUCACMAISYCACMAIQgnAgAAAAEoAgAAAAQpAgAAAAQqAgAAAAErAgAAAAEsAgAAAAEtAgAAAAExAgAeACELJwEAAAABKAEAAAAEKQEAAAAEKgEAAAABKwEAAAABLAEAAAABLQEAAAABLgEAAAABLwEAAAABMAEAAAABMQEAHwAhAAAAAAAFMgIAAAABMwIAAAABNAIAAAABNQIAAAABNgIAAAABATIBAAAAAQAAAAAFFQAGFgAHFwAIGAAJGQAKAAAAAAAFFQAGFgAHFwAIGAAJGQAKAQIBAgMBBQYBBgcBBwgBCQoBCgwCCw0DDA8BDRECDhIEERMBEhQBExUCGhgFGxkL"
 }
 
@@ -70,8 +70,8 @@ export interface PrismaClientConstructor {
    * const prisma = new PrismaClient({
    *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
    * })
-   * // Fetch zero or more MentorTeams
-   * const mentorTeams = await prisma.mentorTeams.findMany()
+   * // Fetch zero or more OnlineRounds
+   * const onlineRounds = await prisma.onlineRound.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -94,8 +94,8 @@ export interface PrismaClientConstructor {
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more MentorTeams
- * const mentorTeams = await prisma.mentorTeams.findMany()
+ * // Fetch zero or more OnlineRounds
+ * const onlineRounds = await prisma.onlineRound.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -189,14 +189,14 @@ export interface PrismaClient<
   }>>
 
       /**
-   * `prisma.mentorTeams`: Exposes CRUD operations for the **mentorTeams** model.
+   * `prisma.onlineRound`: Exposes CRUD operations for the **onlineRound** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more MentorTeams
-    * const mentorTeams = await prisma.mentorTeams.findMany()
+    * // Fetch zero or more OnlineRounds
+    * const onlineRounds = await prisma.onlineRound.findMany()
     * ```
     */
-  get mentorTeams(): Prisma.mentorTeamsDelegate<ExtArgs, { omit: OmitOpts }>;
+  get onlineRound(): Prisma.onlineRoundDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

@@ -9,7 +9,7 @@ datasource db {
   provider = "postgresql"
 }
 
-model mentorTeams {
+model onlineRound {
   teamId              Int    @id
   teamName            String @unique
   presentation        Int

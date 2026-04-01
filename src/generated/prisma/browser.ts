@@ -18,7 +18,7 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model mentorTeams
+ * Model onlineRound
  * 
  */
-export type mentorTeams = Prisma.mentorTeamsModel
+export type onlineRound = Prisma.onlineRoundModel
