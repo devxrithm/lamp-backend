@@ -9,4 +9,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/onlineRound'
+export type * from './models/offlineMentorRound'
+export type * from './models/offlineJuryRound'
 export type * from './commonInputTypes'

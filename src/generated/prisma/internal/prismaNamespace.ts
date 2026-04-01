@@ -384,7 +384,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  onlineRound: 'onlineRound'
+  onlineRound: 'onlineRound',
+  offlineMentorRound: 'offlineMentorRound',
+  offlineJuryRound: 'offlineJuryRound'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "onlineRound"
+    modelProps: "onlineRound" | "offlineMentorRound" | "offlineJuryRound"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +480,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    offlineMentorRound: {
+      payload: Prisma.$offlineMentorRoundPayload<ExtArgs>
+      fields: Prisma.offlineMentorRoundFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.offlineMentorRoundFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.offlineMentorRoundFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>
+        }
+        findFirst: {
+          args: Prisma.offlineMentorRoundFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.offlineMentorRoundFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>
+        }
+        findMany: {
+          args: Prisma.offlineMentorRoundFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>[]
+        }
+        create: {
+          args: Prisma.offlineMentorRoundCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>
+        }
+        createMany: {
+          args: Prisma.offlineMentorRoundCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.offlineMentorRoundCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>[]
+        }
+        delete: {
+          args: Prisma.offlineMentorRoundDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>
+        }
+        update: {
+          args: Prisma.offlineMentorRoundUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>
+        }
+        deleteMany: {
+          args: Prisma.offlineMentorRoundDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.offlineMentorRoundUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.offlineMentorRoundUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>[]
+        }
+        upsert: {
+          args: Prisma.offlineMentorRoundUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineMentorRoundPayload>
+        }
+        aggregate: {
+          args: Prisma.OfflineMentorRoundAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOfflineMentorRound>
+        }
+        groupBy: {
+          args: Prisma.offlineMentorRoundGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OfflineMentorRoundGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.offlineMentorRoundCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OfflineMentorRoundCountAggregateOutputType> | number
+        }
+      }
+    }
+    offlineJuryRound: {
+      payload: Prisma.$offlineJuryRoundPayload<ExtArgs>
+      fields: Prisma.offlineJuryRoundFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.offlineJuryRoundFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.offlineJuryRoundFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>
+        }
+        findFirst: {
+          args: Prisma.offlineJuryRoundFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.offlineJuryRoundFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>
+        }
+        findMany: {
+          args: Prisma.offlineJuryRoundFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>[]
+        }
+        create: {
+          args: Prisma.offlineJuryRoundCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>
+        }
+        createMany: {
+          args: Prisma.offlineJuryRoundCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.offlineJuryRoundCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>[]
+        }
+        delete: {
+          args: Prisma.offlineJuryRoundDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>
+        }
+        update: {
+          args: Prisma.offlineJuryRoundUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>
+        }
+        deleteMany: {
+          args: Prisma.offlineJuryRoundDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.offlineJuryRoundUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.offlineJuryRoundUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>[]
+        }
+        upsert: {
+          args: Prisma.offlineJuryRoundUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$offlineJuryRoundPayload>
+        }
+        aggregate: {
+          args: Prisma.OfflineJuryRoundAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOfflineJuryRound>
+        }
+        groupBy: {
+          args: Prisma.offlineJuryRoundGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OfflineJuryRoundGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.offlineJuryRoundCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OfflineJuryRoundCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -529,6 +679,34 @@ export const OnlineRoundScalarFieldEnum = {
 } as const
 
 export type OnlineRoundScalarFieldEnum = (typeof OnlineRoundScalarFieldEnum)[keyof typeof OnlineRoundScalarFieldEnum]
+
+
+export const OfflineMentorRoundScalarFieldEnum = {
+  teamId: 'teamId',
+  teamName: 'teamName',
+  presentation: 'presentation',
+  innovationMarks: 'innovationMarks',
+  technicalComplexity: 'technicalComplexity',
+  marketFeasibility: 'marketFeasibility',
+  futureScope: 'futureScope',
+  totalMarks: 'totalMarks'
+} as const
+
+export type OfflineMentorRoundScalarFieldEnum = (typeof OfflineMentorRoundScalarFieldEnum)[keyof typeof OfflineMentorRoundScalarFieldEnum]
+
+
+export const OfflineJuryRoundScalarFieldEnum = {
+  teamId: 'teamId',
+  teamName: 'teamName',
+  presentation: 'presentation',
+  innovationMarks: 'innovationMarks',
+  technicalComplexity: 'technicalComplexity',
+  marketFeasibility: 'marketFeasibility',
+  futureScope: 'futureScope',
+  totalMarks: 'totalMarks'
+} as const
+
+export type OfflineJuryRoundScalarFieldEnum = (typeof OfflineJuryRoundScalarFieldEnum)[keyof typeof OfflineJuryRoundScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -690,6 +868,8 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   onlineRound?: Prisma.onlineRoundOmit
+  offlineMentorRound?: Prisma.offlineMentorRoundOmit
+  offlineJuryRound?: Prisma.offlineJuryRoundOmit
 }
 
 /* Types for Logging */

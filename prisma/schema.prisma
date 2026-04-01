@@ -19,3 +19,25 @@ model onlineRound {
   futureScope         Int
   totalMarks          Int
 }
+
+model offlineMentorRound {
+  teamId              Int    @id
+  teamName            String @unique
+  presentation        Int
+  innovationMarks     Int
+  technicalComplexity Int
+  marketFeasibility   Int
+  futureScope         Int
+  totalMarks          Int
+}
+
+model offlineJuryRound {
+  teamId              Int    @id
+  teamName            String @unique
+  presentation        Int
+  innovationMarks     Int
+  technicalComplexity Int
+  marketFeasibility   Int
+  futureScope         Int
+  totalMarks          Int
+}

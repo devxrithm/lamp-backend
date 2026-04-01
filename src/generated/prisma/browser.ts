@@ -22,3 +22,13 @@ export * from './enums';
  * 
  */
 export type onlineRound = Prisma.onlineRoundModel
+/**
+ * Model offlineMentorRound
+ * 
+ */
+export type offlineMentorRound = Prisma.offlineMentorRoundModel
+/**
+ * Model offlineJuryRound
+ * 
+ */
+export type offlineJuryRound = Prisma.offlineJuryRoundModel

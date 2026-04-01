@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { mentorUploadMarks } from "./marks-controller";
+import { onlineMentorRound, offlineMentorRound, offlineJuryRound } from "./marks-controller";
 import { authMiddleware } from "../../middlewares/authMiddleware";
 
 const router = Router();
 
-router.post("/upload-marks", authMiddleware, mentorUploadMarks);
+router.post("/mentor-online", authMiddleware, onlineMentorRound);
+router.post("/mentor-offline", authMiddleware, offlineMentorRound);
+router.post("/jury-offline", authMiddleware, offlineJuryRound);
 
 export default router;

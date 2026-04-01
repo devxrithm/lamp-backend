@@ -51,7 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  onlineRound: 'onlineRound'
+  onlineRound: 'onlineRound',
+  offlineMentorRound: 'offlineMentorRound',
+  offlineJuryRound: 'offlineJuryRound'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -82,6 +84,34 @@ export const OnlineRoundScalarFieldEnum = {
 } as const
 
 export type OnlineRoundScalarFieldEnum = (typeof OnlineRoundScalarFieldEnum)[keyof typeof OnlineRoundScalarFieldEnum]
+
+
+export const OfflineMentorRoundScalarFieldEnum = {
+  teamId: 'teamId',
+  teamName: 'teamName',
+  presentation: 'presentation',
+  innovationMarks: 'innovationMarks',
+  technicalComplexity: 'technicalComplexity',
+  marketFeasibility: 'marketFeasibility',
+  futureScope: 'futureScope',
+  totalMarks: 'totalMarks'
+} as const
+
+export type OfflineMentorRoundScalarFieldEnum = (typeof OfflineMentorRoundScalarFieldEnum)[keyof typeof OfflineMentorRoundScalarFieldEnum]
+
+
+export const OfflineJuryRoundScalarFieldEnum = {
+  teamId: 'teamId',
+  teamName: 'teamName',
+  presentation: 'presentation',
+  innovationMarks: 'innovationMarks',
+  technicalComplexity: 'technicalComplexity',
+  marketFeasibility: 'marketFeasibility',
+  futureScope: 'futureScope',
+  totalMarks: 'totalMarks'
+} as const
+
+export type OfflineJuryRoundScalarFieldEnum = (typeof OfflineJuryRoundScalarFieldEnum)[keyof typeof OfflineJuryRoundScalarFieldEnum]
 
 
 export const SortOrder = {
