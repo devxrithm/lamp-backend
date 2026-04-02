@@ -10,7 +10,12 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: "lamp-mih.vercel.app",
+    credentials: true,
+  }),
+);
 app.use(cookieParser());
 
 import authRouter from "./services/auth-service/auth-routes";
