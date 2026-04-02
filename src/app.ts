@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "lamp-mih.vercel.app",
+    origin: "https://lamp-mih.vercel.app",
     credentials: true,
   }),
 );
