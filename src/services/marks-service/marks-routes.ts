@@ -4,7 +4,7 @@ import { authMiddleware } from "../../middlewares/authMiddleware";
 
 const router = Router();
 
-router.post("mentor-online",onlineMentorRound);
+router.post("/mentor-online",onlineMentorRound);
 router.post("/mentor-offline", authMiddleware, offlineMentorRound);
 router.post("/jury-offline", authMiddleware, offlineJuryRound);
 
