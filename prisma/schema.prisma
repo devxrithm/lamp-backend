@@ -18,10 +18,11 @@ model onlineRound {
   marketFeasibility   Int
   futureScope         Int
   totalMarks          Int
+  uploadedBy          String
 }
 
 model offlineMentorRound {
-  teamId              Int    @id
+  uploadedBy          String
   teamName            String @unique
   presentation        Int
   innovationMarks     Int
@@ -29,10 +30,12 @@ model offlineMentorRound {
   marketFeasibility   Int
   futureScope         Int
   totalMarks          Int
+  round               Int
 }
 
 model offlineJuryRound {
   teamId              Int    @id
+  uploadedBy          String
   teamName            String @unique
   presentation        Int
   innovationMarks     Int
