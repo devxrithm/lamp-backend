@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  User: 'User',
   onlineRound: 'onlineRound',
   offlineMentorRound: 'offlineMentorRound',
   offlineJuryRound: 'offlineJuryRound'
@@ -72,6 +73,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const UserScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  email: 'email',
+  password: 'password',
+  refreshToken: 'refreshToken',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
 export const OnlineRoundScalarFieldEnum = {
   teamId: 'teamId',
   teamName: 'teamName',
@@ -87,14 +101,15 @@ export type OnlineRoundScalarFieldEnum = (typeof OnlineRoundScalarFieldEnum)[key
 
 
 export const OfflineMentorRoundScalarFieldEnum = {
-  teamId: 'teamId',
+  uploadedBy: 'uploadedBy',
   teamName: 'teamName',
   presentation: 'presentation',
   innovationMarks: 'innovationMarks',
   technicalComplexity: 'technicalComplexity',
   marketFeasibility: 'marketFeasibility',
   futureScope: 'futureScope',
-  totalMarks: 'totalMarks'
+  totalMarks: 'totalMarks',
+  round: 'round'
 } as const
 
 export type OfflineMentorRoundScalarFieldEnum = (typeof OfflineMentorRoundScalarFieldEnum)[keyof typeof OfflineMentorRoundScalarFieldEnum]
@@ -102,6 +117,7 @@ export type OfflineMentorRoundScalarFieldEnum = (typeof OfflineMentorRoundScalar
 
 export const OfflineJuryRoundScalarFieldEnum = {
   teamId: 'teamId',
+  uploadedBy: 'uploadedBy',
   teamName: 'teamName',
   presentation: 'presentation',
   innovationMarks: 'innovationMarks',
@@ -128,4 +144,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

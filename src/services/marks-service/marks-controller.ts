@@ -1,55 +1,9 @@
 import { Response, Request } from "express";
 import { Marks } from "../../types/types";
 import { getPrisma } from "../../lib/prisma";
+import { AuthRequest } from "../../middleware/jwt-verify";
 
-// export const onlineMentorRound = async (
-//   req: Request<any, any, Marks>,
-//   res: Response,
-// ) => {
-//   try {
-//     const prisma = getPrisma();
-
-//     const {
-//       teamName,
-//       presentation,
-//       innovationMarks,
-//       technicalComplexity,
-//       marketFeasibility,
-//       futureScope,
-//     } = req.body;
-
-//     const marks = {
-//       innovationMarks: Number(innovationMarks),
-//       technicalComplexity: Number(technicalComplexity),
-//       presentation: Number(presentation),
-//       marketFeasibility: Number(marketFeasibility),
-//       futureScope: Number(futureScope),
-//     };
-
-//     const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
-
-//     const id = Math.floor((Math.random()*10000))
-
-//     const data = await prisma.onlineRound.create({
-//       data: {
-//         teamId: Number(id),
-//         teamName,
-//         ...marks,
-//         totalMarks,
-//       },
-//     });
-
-//     console.log("Marks uploaded successfully:", data);
-//     return res.status(200).json({ message: "Marks uploaded successfully" });
-//   } catch (error) {
-//     console.log("Error uploading marks:", error);
-//     return res.status(500).json({ error: "Internal server error" });
-//   }
-// };
-
-// *************************for offline mentor round*********************
-
-export const offlineMentorRound = async (
+export const onlineMentorRound = async (
   req: Request<any, any, Marks>,
   res: Response,
 ) => {
@@ -57,7 +11,6 @@ export const offlineMentorRound = async (
     const prisma = getPrisma();
 
     const {
-      teamId,
       teamName,
       presentation,
       innovationMarks,
@@ -76,14 +29,67 @@ export const offlineMentorRound = async (
 
     const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
 
+    const id = Math.floor(Math.random() * 10000);
+
     const data = await prisma.onlineRound.create({
       data: {
-        teamId: Number(teamId),
+        teamId: Number(id),
         teamName,
         ...marks,
         totalMarks,
       },
     });
+
+    console.log("Marks uploaded successfully:", data);
+    return res.status(200).json({ message: "Marks uploaded successfully" });
+  } catch (error) {
+    console.log("Error uploading marks:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// *************************for offline mentor round*********************
+
+export const offlineMentorRound = async (req: AuthRequest, res: Response) => {
+  try {
+    const user = req.user?.fullname || "Unknown Mentor";
+    const prisma = getPrisma();
+
+    //get user data from frontend
+    const {
+      teamName,
+      presentation,
+      innovationMarks,
+      technicalComplexity,
+      marketFeasibility,
+      futureScope,
+      round,
+    } = req.body;
+
+    //make object of marks and calculate total marks
+    const marks = {
+      innovationMarks: Number(innovationMarks),
+      technicalComplexity: Number(technicalComplexity),
+      presentation: Number(presentation),
+      marketFeasibility: Number(marketFeasibility),
+      futureScope: Number(futureScope),
+    };
+
+    //calculate total marks
+    const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
+
+    //store data in database
+    const data = await prisma.offlineMentorRound.create({
+      data: {
+        uploadedBy: user,
+        teamName,
+        ...marks,
+        totalMarks,
+        round: Number(round), 
+      },
+    });
+
+    //marks uploaded successfully
     console.log("Marks uploaded successfully:", data);
     return res.status(200).json({ message: "Marks uploaded successfully" });
   } catch (error) {
@@ -94,11 +100,9 @@ export const offlineMentorRound = async (
 
 //**************************for offlone jury round*********************
 
-export const offlineJuryRound = async (
-  req: Request<any, any, Marks>,
-  res: Response,
-) => {
+export const offlineJuryRound = async (req: AuthRequest, res: Response) => {
   try {
+    const user = req.user?.fullname || "Unknown Mentor";
     const prisma = getPrisma();
 
     const {
@@ -121,8 +125,9 @@ export const offlineJuryRound = async (
 
     const totalMarks = Object.values(marks).reduce((sum, val) => sum + val, 0);
 
-    const data = await prisma.onlineRound.create({
+    const data = await prisma.offlineJuryRound.create({
       data: {
+        uploadedBy: user,
         teamId: Number(teamId),
         teamName,
         ...marks,

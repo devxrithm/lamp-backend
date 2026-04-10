@@ -1,18 +1,17 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import { getPrisma } from "../../lib/prisma";
 import {
-  ApiErrorHandling,
-  HttpCodes,
   accessTokenJwtSign,
   refreshTokenJwtSign,
   hashPassword,
   comparePassword,
 } from "../../utils/utils-export";
 
-interface IAuth extends Document {
+export interface AuthDocument {
+  _id: string;
   fullName: string;
   email: string;
   password: string;
-  refreshToken: string;
+  refreshToken: string | null;
   createdAt: Date;
   updatedAt: Date;
   GenrateAccessToken(): string;
@@ -20,66 +19,137 @@ interface IAuth extends Document {
   IsPasswordCorrect(password: string): Promise<boolean>;
 }
 
-const UserSchema: Schema<IAuth> = new Schema<IAuth>(
-  {
-    fullName: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    refreshToken: {
-      type: String,
-    },
-  },
-  {
-    timestamps: true,
-  },
-);
+export interface PublicAuthUser {
+  _id: string;
+  fullName: string;
+  fullname: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-//do some stuff before saving password. it will convert plain password in random salt using bcrypt library . this function used mongoose inBuilt middleware hook 'pre' which is genrally used to do some stuff in data before saving in a database
+type UserRecord = {
+  id: string;
+  fullName: string;
+  email: string;
+  password: string;
+  refreshToken: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
-UserSchema.pre<IAuth>("save", async function () {
-  try {
-    if (!this.isModified("password")) return;
-    this.password = await hashPassword(this.password, 10);
-  } catch (error) {
-    const msg =
-      error instanceof ApiErrorHandling ? error.message : String(error);
-    throw new ApiErrorHandling(
-      HttpCodes.INTERNAL_SERVER_ERROR,
-      "Internal Server Error",
-      [msg],
-    );
-  }
+const toAuthDocument = (user: UserRecord): AuthDocument => ({
+  _id: user.id,
+  fullName: user.fullName,
+  email: user.email,
+  password: user.password,
+  refreshToken: user.refreshToken,
+  createdAt: user.createdAt,
+  updatedAt: user.updatedAt,
+  GenrateAccessToken() {
+    return accessTokenJwtSign({
+      _id: user.id,
+      email: user.email,
+      fullname: user.fullName,
+    });
+  },
+  GenrateRefreshToken() {
+    return refreshTokenJwtSign({
+      _id: user.id,
+    });
+  },
+  IsPasswordCorrect(password: string) {
+    return comparePassword(password, user.password);
+  },
 });
 
-//this inbuilt function is used to create a custom own method, which further used in to check password and all
+export const sanitizeAuthUser = (
+  user: UserRecord | AuthDocument | PublicAuthUser,
+): PublicAuthUser => ({
+  _id: "id" in user ? user.id : user._id,
+  fullName: user.fullName,
+  fullname: user.fullName,
+  email: user.email,
+  createdAt: user.createdAt,
+  updatedAt: user.updatedAt,
+});
 
-UserSchema.methods.IsPasswordCorrect = async function (password: string) {
-  return await comparePassword(password, this.password);
-};
+export class Auth {
+  static async findOne(where: { email: string }) {
+    const prisma = getPrisma();
+    const user = await prisma.user.findUnique({
+      where: { email: where.email.toLowerCase() },
+    });
 
-// generate access and refresh token via mongoose inbuilt method generator, use this keyword to access
-UserSchema.methods.GenrateAccessToken = function () {
-  return accessTokenJwtSign({
-    _id: this._id,
-    email: this.email,
-    fullName: this.fullName,
-  });
-};
+    return user ? toAuthDocument(user) : null;
+  }
 
-UserSchema.methods.GenrateRefreshToken = function () {
-  return refreshTokenJwtSign({
-    _id: this._id,
-  });
-};
-export const Auth: Model<IAuth> = mongoose.model<IAuth>("User", UserSchema);
+  static async create(data: {
+    fullName: string;
+    email: string;
+    password: string;
+  }) {
+    const prisma = getPrisma();
+    const hashedPassword = await hashPassword(data.password, 10);
+    const user = await prisma.user.create({
+      data: {
+        fullName: data.fullName,
+        email: data.email.toLowerCase(),
+        password: hashedPassword,
+      },
+    });
+
+    return toAuthDocument(user);
+  }
+
+  static async findById(id: string) {
+    const prisma = getPrisma();
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+
+    return user ? toAuthDocument(user) : null;
+  }
+
+  static async findPublicById(id: string) {
+    const prisma = getPrisma();
+    const user = await prisma.user.findUnique({
+      where: { id },
+      omit: {
+        password: true,
+        refreshToken: true,
+      },
+    });
+
+    return user
+      ? {
+          _id: user.id,
+          fullName: user.fullName,
+          fullname: user.fullName,
+          email: user.email,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        }
+      : null;
+  }
+
+  static async updateRefreshToken(id: string, refreshToken: string) {
+    const prisma = getPrisma();
+    const user = await prisma.user.update({
+      where: { id },
+      data: { refreshToken },
+    });
+
+    return toAuthDocument(user);
+  }
+
+  static async clearRefreshToken(id: string) {
+    const prisma = getPrisma();
+    const user = await prisma.user.update({
+      where: { id },
+      data: { refreshToken: null },
+    });
+
+    return toAuthDocument(user);
+  }
+}

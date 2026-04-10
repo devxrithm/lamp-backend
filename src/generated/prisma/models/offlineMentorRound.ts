@@ -27,27 +27,27 @@ export type AggregateOfflineMentorRound = {
 }
 
 export type OfflineMentorRoundAvgAggregateOutputType = {
-  teamId: number | null
   presentation: number | null
   innovationMarks: number | null
   technicalComplexity: number | null
   marketFeasibility: number | null
   futureScope: number | null
   totalMarks: number | null
+  round: number | null
 }
 
 export type OfflineMentorRoundSumAggregateOutputType = {
-  teamId: number | null
   presentation: number | null
   innovationMarks: number | null
   technicalComplexity: number | null
   marketFeasibility: number | null
   futureScope: number | null
   totalMarks: number | null
+  round: number | null
 }
 
 export type OfflineMentorRoundMinAggregateOutputType = {
-  teamId: number | null
+  uploadedBy: string | null
   teamName: string | null
   presentation: number | null
   innovationMarks: number | null
@@ -55,10 +55,11 @@ export type OfflineMentorRoundMinAggregateOutputType = {
   marketFeasibility: number | null
   futureScope: number | null
   totalMarks: number | null
+  round: number | null
 }
 
 export type OfflineMentorRoundMaxAggregateOutputType = {
-  teamId: number | null
+  uploadedBy: string | null
   teamName: string | null
   presentation: number | null
   innovationMarks: number | null
@@ -66,10 +67,11 @@ export type OfflineMentorRoundMaxAggregateOutputType = {
   marketFeasibility: number | null
   futureScope: number | null
   totalMarks: number | null
+  round: number | null
 }
 
 export type OfflineMentorRoundCountAggregateOutputType = {
-  teamId: number
+  uploadedBy: number
   teamName: number
   presentation: number
   innovationMarks: number
@@ -77,32 +79,33 @@ export type OfflineMentorRoundCountAggregateOutputType = {
   marketFeasibility: number
   futureScope: number
   totalMarks: number
+  round: number
   _all: number
 }
 
 
 export type OfflineMentorRoundAvgAggregateInputType = {
-  teamId?: true
   presentation?: true
   innovationMarks?: true
   technicalComplexity?: true
   marketFeasibility?: true
   futureScope?: true
   totalMarks?: true
+  round?: true
 }
 
 export type OfflineMentorRoundSumAggregateInputType = {
-  teamId?: true
   presentation?: true
   innovationMarks?: true
   technicalComplexity?: true
   marketFeasibility?: true
   futureScope?: true
   totalMarks?: true
+  round?: true
 }
 
 export type OfflineMentorRoundMinAggregateInputType = {
-  teamId?: true
+  uploadedBy?: true
   teamName?: true
   presentation?: true
   innovationMarks?: true
@@ -110,10 +113,11 @@ export type OfflineMentorRoundMinAggregateInputType = {
   marketFeasibility?: true
   futureScope?: true
   totalMarks?: true
+  round?: true
 }
 
 export type OfflineMentorRoundMaxAggregateInputType = {
-  teamId?: true
+  uploadedBy?: true
   teamName?: true
   presentation?: true
   innovationMarks?: true
@@ -121,10 +125,11 @@ export type OfflineMentorRoundMaxAggregateInputType = {
   marketFeasibility?: true
   futureScope?: true
   totalMarks?: true
+  round?: true
 }
 
 export type OfflineMentorRoundCountAggregateInputType = {
-  teamId?: true
+  uploadedBy?: true
   teamName?: true
   presentation?: true
   innovationMarks?: true
@@ -132,6 +137,7 @@ export type OfflineMentorRoundCountAggregateInputType = {
   marketFeasibility?: true
   futureScope?: true
   totalMarks?: true
+  round?: true
   _all?: true
 }
 
@@ -222,7 +228,7 @@ export type offlineMentorRoundGroupByArgs<ExtArgs extends runtime.Types.Extensio
 }
 
 export type OfflineMentorRoundGroupByOutputType = {
-  teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -230,6 +236,7 @@ export type OfflineMentorRoundGroupByOutputType = {
   marketFeasibility: number
   futureScope: number
   totalMarks: number
+  round: number
   _count: OfflineMentorRoundCountAggregateOutputType | null
   _avg: OfflineMentorRoundAvgAggregateOutputType | null
   _sum: OfflineMentorRoundSumAggregateOutputType | null
@@ -256,7 +263,7 @@ export type offlineMentorRoundWhereInput = {
   AND?: Prisma.offlineMentorRoundWhereInput | Prisma.offlineMentorRoundWhereInput[]
   OR?: Prisma.offlineMentorRoundWhereInput[]
   NOT?: Prisma.offlineMentorRoundWhereInput | Prisma.offlineMentorRoundWhereInput[]
-  teamId?: Prisma.IntFilter<"offlineMentorRound"> | number
+  uploadedBy?: Prisma.StringFilter<"offlineMentorRound"> | string
   teamName?: Prisma.StringFilter<"offlineMentorRound"> | string
   presentation?: Prisma.IntFilter<"offlineMentorRound"> | number
   innovationMarks?: Prisma.IntFilter<"offlineMentorRound"> | number
@@ -264,10 +271,11 @@ export type offlineMentorRoundWhereInput = {
   marketFeasibility?: Prisma.IntFilter<"offlineMentorRound"> | number
   futureScope?: Prisma.IntFilter<"offlineMentorRound"> | number
   totalMarks?: Prisma.IntFilter<"offlineMentorRound"> | number
+  round?: Prisma.IntFilter<"offlineMentorRound"> | number
 }
 
 export type offlineMentorRoundOrderByWithRelationInput = {
-  teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -275,24 +283,26 @@ export type offlineMentorRoundOrderByWithRelationInput = {
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
 }
 
 export type offlineMentorRoundWhereUniqueInput = Prisma.AtLeast<{
-  teamId?: number
   teamName?: string
   AND?: Prisma.offlineMentorRoundWhereInput | Prisma.offlineMentorRoundWhereInput[]
   OR?: Prisma.offlineMentorRoundWhereInput[]
   NOT?: Prisma.offlineMentorRoundWhereInput | Prisma.offlineMentorRoundWhereInput[]
+  uploadedBy?: Prisma.StringFilter<"offlineMentorRound"> | string
   presentation?: Prisma.IntFilter<"offlineMentorRound"> | number
   innovationMarks?: Prisma.IntFilter<"offlineMentorRound"> | number
   technicalComplexity?: Prisma.IntFilter<"offlineMentorRound"> | number
   marketFeasibility?: Prisma.IntFilter<"offlineMentorRound"> | number
   futureScope?: Prisma.IntFilter<"offlineMentorRound"> | number
   totalMarks?: Prisma.IntFilter<"offlineMentorRound"> | number
-}, "teamId" | "teamName">
+  round?: Prisma.IntFilter<"offlineMentorRound"> | number
+}, "teamName">
 
 export type offlineMentorRoundOrderByWithAggregationInput = {
-  teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -300,6 +310,7 @@ export type offlineMentorRoundOrderByWithAggregationInput = {
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
   _count?: Prisma.offlineMentorRoundCountOrderByAggregateInput
   _avg?: Prisma.offlineMentorRoundAvgOrderByAggregateInput
   _max?: Prisma.offlineMentorRoundMaxOrderByAggregateInput
@@ -311,7 +322,7 @@ export type offlineMentorRoundScalarWhereWithAggregatesInput = {
   AND?: Prisma.offlineMentorRoundScalarWhereWithAggregatesInput | Prisma.offlineMentorRoundScalarWhereWithAggregatesInput[]
   OR?: Prisma.offlineMentorRoundScalarWhereWithAggregatesInput[]
   NOT?: Prisma.offlineMentorRoundScalarWhereWithAggregatesInput | Prisma.offlineMentorRoundScalarWhereWithAggregatesInput[]
-  teamId?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
+  uploadedBy?: Prisma.StringWithAggregatesFilter<"offlineMentorRound"> | string
   teamName?: Prisma.StringWithAggregatesFilter<"offlineMentorRound"> | string
   presentation?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
   innovationMarks?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
@@ -319,10 +330,11 @@ export type offlineMentorRoundScalarWhereWithAggregatesInput = {
   marketFeasibility?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
   futureScope?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
   totalMarks?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
+  round?: Prisma.IntWithAggregatesFilter<"offlineMentorRound"> | number
 }
 
 export type offlineMentorRoundCreateInput = {
-  teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -330,10 +342,11 @@ export type offlineMentorRoundCreateInput = {
   marketFeasibility: number
   futureScope: number
   totalMarks: number
+  round: number
 }
 
 export type offlineMentorRoundUncheckedCreateInput = {
-  teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -341,10 +354,11 @@ export type offlineMentorRoundUncheckedCreateInput = {
   marketFeasibility: number
   futureScope: number
   totalMarks: number
+  round: number
 }
 
 export type offlineMentorRoundUpdateInput = {
-  teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -352,10 +366,11 @@ export type offlineMentorRoundUpdateInput = {
   marketFeasibility?: Prisma.IntFieldUpdateOperationsInput | number
   futureScope?: Prisma.IntFieldUpdateOperationsInput | number
   totalMarks?: Prisma.IntFieldUpdateOperationsInput | number
+  round?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type offlineMentorRoundUncheckedUpdateInput = {
-  teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -363,10 +378,11 @@ export type offlineMentorRoundUncheckedUpdateInput = {
   marketFeasibility?: Prisma.IntFieldUpdateOperationsInput | number
   futureScope?: Prisma.IntFieldUpdateOperationsInput | number
   totalMarks?: Prisma.IntFieldUpdateOperationsInput | number
+  round?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type offlineMentorRoundCreateManyInput = {
-  teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -374,10 +390,11 @@ export type offlineMentorRoundCreateManyInput = {
   marketFeasibility: number
   futureScope: number
   totalMarks: number
+  round: number
 }
 
 export type offlineMentorRoundUpdateManyMutationInput = {
-  teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -385,10 +402,11 @@ export type offlineMentorRoundUpdateManyMutationInput = {
   marketFeasibility?: Prisma.IntFieldUpdateOperationsInput | number
   futureScope?: Prisma.IntFieldUpdateOperationsInput | number
   totalMarks?: Prisma.IntFieldUpdateOperationsInput | number
+  round?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type offlineMentorRoundUncheckedUpdateManyInput = {
-  teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -396,10 +414,11 @@ export type offlineMentorRoundUncheckedUpdateManyInput = {
   marketFeasibility?: Prisma.IntFieldUpdateOperationsInput | number
   futureScope?: Prisma.IntFieldUpdateOperationsInput | number
   totalMarks?: Prisma.IntFieldUpdateOperationsInput | number
+  round?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type offlineMentorRoundCountOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -407,20 +426,21 @@ export type offlineMentorRoundCountOrderByAggregateInput = {
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
 }
 
 export type offlineMentorRoundAvgOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
   technicalComplexity?: Prisma.SortOrder
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
 }
 
 export type offlineMentorRoundMaxOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -428,10 +448,11 @@ export type offlineMentorRoundMaxOrderByAggregateInput = {
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
 }
 
 export type offlineMentorRoundMinOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -439,22 +460,23 @@ export type offlineMentorRoundMinOrderByAggregateInput = {
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
 }
 
 export type offlineMentorRoundSumOrderByAggregateInput = {
-  teamId?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
   technicalComplexity?: Prisma.SortOrder
   marketFeasibility?: Prisma.SortOrder
   futureScope?: Prisma.SortOrder
   totalMarks?: Prisma.SortOrder
+  round?: Prisma.SortOrder
 }
 
 
 
 export type offlineMentorRoundSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -462,10 +484,11 @@ export type offlineMentorRoundSelect<ExtArgs extends runtime.Types.Extensions.In
   marketFeasibility?: boolean
   futureScope?: boolean
   totalMarks?: boolean
+  round?: boolean
 }, ExtArgs["result"]["offlineMentorRound"]>
 
 export type offlineMentorRoundSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -473,10 +496,11 @@ export type offlineMentorRoundSelectCreateManyAndReturn<ExtArgs extends runtime.
   marketFeasibility?: boolean
   futureScope?: boolean
   totalMarks?: boolean
+  round?: boolean
 }, ExtArgs["result"]["offlineMentorRound"]>
 
 export type offlineMentorRoundSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -484,10 +508,11 @@ export type offlineMentorRoundSelectUpdateManyAndReturn<ExtArgs extends runtime.
   marketFeasibility?: boolean
   futureScope?: boolean
   totalMarks?: boolean
+  round?: boolean
 }, ExtArgs["result"]["offlineMentorRound"]>
 
 export type offlineMentorRoundSelectScalar = {
-  teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -495,15 +520,16 @@ export type offlineMentorRoundSelectScalar = {
   marketFeasibility?: boolean
   futureScope?: boolean
   totalMarks?: boolean
+  round?: boolean
 }
 
-export type offlineMentorRoundOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"teamId" | "teamName" | "presentation" | "innovationMarks" | "technicalComplexity" | "marketFeasibility" | "futureScope" | "totalMarks", ExtArgs["result"]["offlineMentorRound"]>
+export type offlineMentorRoundOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"uploadedBy" | "teamName" | "presentation" | "innovationMarks" | "technicalComplexity" | "marketFeasibility" | "futureScope" | "totalMarks" | "round", ExtArgs["result"]["offlineMentorRound"]>
 
 export type $offlineMentorRoundPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "offlineMentorRound"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    teamId: number
+    uploadedBy: string
     teamName: string
     presentation: number
     innovationMarks: number
@@ -511,6 +537,7 @@ export type $offlineMentorRoundPayload<ExtArgs extends runtime.Types.Extensions.
     marketFeasibility: number
     futureScope: number
     totalMarks: number
+    round: number
   }, ExtArgs["result"]["offlineMentorRound"]>
   composites: {}
 }
@@ -594,8 +621,8 @@ export interface offlineMentorRoundDelegate<ExtArgs extends runtime.Types.Extens
    * // Get first 10 OfflineMentorRounds
    * const offlineMentorRounds = await prisma.offlineMentorRound.findMany({ take: 10 })
    * 
-   * // Only select the `teamId`
-   * const offlineMentorRoundWithTeamIdOnly = await prisma.offlineMentorRound.findMany({ select: { teamId: true } })
+   * // Only select the `uploadedBy`
+   * const offlineMentorRoundWithUploadedByOnly = await prisma.offlineMentorRound.findMany({ select: { uploadedBy: true } })
    * 
    */
   findMany<T extends offlineMentorRoundFindManyArgs>(args?: Prisma.SelectSubset<T, offlineMentorRoundFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$offlineMentorRoundPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -639,9 +666,9 @@ export interface offlineMentorRoundDelegate<ExtArgs extends runtime.Types.Extens
    *   ]
    * })
    * 
-   * // Create many OfflineMentorRounds and only return the `teamId`
-   * const offlineMentorRoundWithTeamIdOnly = await prisma.offlineMentorRound.createManyAndReturn({
-   *   select: { teamId: true },
+   * // Create many OfflineMentorRounds and only return the `uploadedBy`
+   * const offlineMentorRoundWithUploadedByOnly = await prisma.offlineMentorRound.createManyAndReturn({
+   *   select: { uploadedBy: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -730,9 +757,9 @@ export interface offlineMentorRoundDelegate<ExtArgs extends runtime.Types.Extens
    *   ]
    * })
    * 
-   * // Update zero or more OfflineMentorRounds and only return the `teamId`
-   * const offlineMentorRoundWithTeamIdOnly = await prisma.offlineMentorRound.updateManyAndReturn({
-   *   select: { teamId: true },
+   * // Update zero or more OfflineMentorRounds and only return the `uploadedBy`
+   * const offlineMentorRoundWithUploadedByOnly = await prisma.offlineMentorRound.updateManyAndReturn({
+   *   select: { uploadedBy: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -934,7 +961,7 @@ export interface Prisma__offlineMentorRoundClient<T, Null = never, ExtArgs exten
  * Fields of the offlineMentorRound model
  */
 export interface offlineMentorRoundFieldRefs {
-  readonly teamId: Prisma.FieldRef<"offlineMentorRound", 'Int'>
+  readonly uploadedBy: Prisma.FieldRef<"offlineMentorRound", 'String'>
   readonly teamName: Prisma.FieldRef<"offlineMentorRound", 'String'>
   readonly presentation: Prisma.FieldRef<"offlineMentorRound", 'Int'>
   readonly innovationMarks: Prisma.FieldRef<"offlineMentorRound", 'Int'>
@@ -942,6 +969,7 @@ export interface offlineMentorRoundFieldRefs {
   readonly marketFeasibility: Prisma.FieldRef<"offlineMentorRound", 'Int'>
   readonly futureScope: Prisma.FieldRef<"offlineMentorRound", 'Int'>
   readonly totalMarks: Prisma.FieldRef<"offlineMentorRound", 'Int'>
+  readonly round: Prisma.FieldRef<"offlineMentorRound", 'Int'>
 }
     
 

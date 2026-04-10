@@ -1,4 +1,4 @@
-import { Auth } from "./auth-model";
+import { Auth, sanitizeAuthUser } from "./auth-model";
 import {
   ApiResponse,
   ApiErrorHandling,
@@ -6,13 +6,11 @@ import {
   jwtVerifyRefreshToken,
   getAccessAndRefreshToken,
   jwtVerifyAccessToken,
+  authCookieOptions,
+  getAccessTokenFromRequest,
+  getRefreshTokenFromRequest,
 } from "../../utils/utils-export";
-import {
-  Request,
-  Response,
-  CookieOptions,
-  RequestHandler
-} from "express";
+import { Request, Response, RequestHandler } from "express";
 import { AuthRequest } from "../../middleware/jwt-verify";
 
 const userSignup = async (
@@ -58,9 +56,7 @@ const userSignup = async (
       password,
     });
 
-    const userCreated = await Auth.findById(user._id).select(
-      "-password -refreshToken",
-    );
+    const userCreated = await Auth.findPublicById(user._id);
 
     if (!userCreated) {
       throw new ApiErrorHandling(
@@ -142,18 +138,12 @@ const userLogin = async (
     return res
       .status(200)
       .cookie("accessToken", accessToken, {
-        httpOnly: true,
-        secure: true, // required for HTTPS
-        sameSite: "none", // allow cross-site
-        path: "/",
+        ...authCookieOptions,
         expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
         maxAge: 84600 * 1000,
       })
       .cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        secure: true, // required for HTTPS
-        sameSite: "none", // allow cross-site
-        path: "/",
+        ...authCookieOptions,
         expires: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
         maxAge: 84600 * 1000,
       })
@@ -186,17 +176,9 @@ const userLogin = async (
 };
 
 const userLogout = async (req: AuthRequest, res: Response) => {
-  await Auth.findByIdAndUpdate(
-    req.user?._id,
-    {
-      $unset: {
-        refreshToken: 1, // this removes the field from document
-      },
-    },
-    {
-      new: true,
-    },
-  );
+  if (req.user?._id) {
+    await Auth.clearRefreshToken(req.user._id);
+  }
 
   interface IOptions {
     httpOnly: boolean;
@@ -225,7 +207,7 @@ const genrateNewAccessAndRefreshToken = async (req: Request, res: Response) => {
   //check if stored token in DB and browser stored token are same or not
   //now generate new access token and refresh token to maintain the security for web app
   try {
-    const localToken = req.cookies.refreshToken;
+    const localToken = getRefreshTokenFromRequest(req);
     if (!localToken) {
       throw new ApiErrorHandling(
         HttpCodes.BAD_REQUEST,
@@ -255,21 +237,14 @@ const genrateNewAccessAndRefreshToken = async (req: Request, res: Response) => {
     );
     //why we use this keyword because i am using the constructor to maintain the code readbility so, to access the method define in constructor with this keyword
 
-    const cookieOptions: CookieOptions = {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      path: "/",
-    };
-
     return res
       .status(200)
       .cookie("accessToken", accessToken, {
-        ...cookieOptions,
+        ...authCookieOptions,
         maxAge: 60 * 60 * 24 * 1000,
       })
       .cookie("refreshToken", refreshToken, {
-        ...cookieOptions,
+        ...authCookieOptions,
         maxAge: 60 * 60 * 24 * 10 * 1000,
       })
       .json(
@@ -300,10 +275,11 @@ const genrateNewAccessAndRefreshToken = async (req: Request, res: Response) => {
 
 const verifyJWTToken: RequestHandler = async (
   req: AuthRequest,
-  res: Response
+  res: Response,
 ) => {
   try {
-    const token: string = req.cookies?.accessToken;
+    const token = getAccessTokenFromRequest(req);
+console.log("token from cookie or header:", token);
     if (!token) {
       throw new ApiErrorHandling(400, "token invalid");
     }
@@ -313,9 +289,7 @@ const verifyJWTToken: RequestHandler = async (
       throw new ApiErrorHandling(HttpCodes.BAD_REQUEST, "Invalid Token");
     }
 
-    const user = await Auth.findById(decodedToken.UserPayLoad._id).select(
-      "-password -refreshToken",
-    );
+    const user = await Auth.findPublicById(decodedToken.UserPayLoad._id);
 
     if (!user) {
       throw new ApiErrorHandling(401, "Invalid Access Token");
@@ -323,14 +297,21 @@ const verifyJWTToken: RequestHandler = async (
 
     res
       .status(HttpCodes.OK)
-      .json(new ApiResponse(HttpCodes.OK, user, "User verified successfully"));
+      .json(
+        new ApiResponse(
+          HttpCodes.OK,
+          sanitizeAuthUser(user),
+          "User verified successfully",
+        ),
+      );
   } catch (error) {
     if (error instanceof ApiErrorHandling) {
-      res
+      return res
         .status(error.statusCode)
         .json(new ApiResponse(error.statusCode, null, error.message));
     }
-    res
+
+    return res
       .status(HttpCodes.INTERNAL_SERVER_ERROR)
       .json(
         new ApiResponse(

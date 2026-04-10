@@ -48,6 +48,7 @@ export type OfflineJuryRoundSumAggregateOutputType = {
 
 export type OfflineJuryRoundMinAggregateOutputType = {
   teamId: number | null
+  uploadedBy: string | null
   teamName: string | null
   presentation: number | null
   innovationMarks: number | null
@@ -59,6 +60,7 @@ export type OfflineJuryRoundMinAggregateOutputType = {
 
 export type OfflineJuryRoundMaxAggregateOutputType = {
   teamId: number | null
+  uploadedBy: string | null
   teamName: string | null
   presentation: number | null
   innovationMarks: number | null
@@ -70,6 +72,7 @@ export type OfflineJuryRoundMaxAggregateOutputType = {
 
 export type OfflineJuryRoundCountAggregateOutputType = {
   teamId: number
+  uploadedBy: number
   teamName: number
   presentation: number
   innovationMarks: number
@@ -103,6 +106,7 @@ export type OfflineJuryRoundSumAggregateInputType = {
 
 export type OfflineJuryRoundMinAggregateInputType = {
   teamId?: true
+  uploadedBy?: true
   teamName?: true
   presentation?: true
   innovationMarks?: true
@@ -114,6 +118,7 @@ export type OfflineJuryRoundMinAggregateInputType = {
 
 export type OfflineJuryRoundMaxAggregateInputType = {
   teamId?: true
+  uploadedBy?: true
   teamName?: true
   presentation?: true
   innovationMarks?: true
@@ -125,6 +130,7 @@ export type OfflineJuryRoundMaxAggregateInputType = {
 
 export type OfflineJuryRoundCountAggregateInputType = {
   teamId?: true
+  uploadedBy?: true
   teamName?: true
   presentation?: true
   innovationMarks?: true
@@ -223,6 +229,7 @@ export type offlineJuryRoundGroupByArgs<ExtArgs extends runtime.Types.Extensions
 
 export type OfflineJuryRoundGroupByOutputType = {
   teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -257,6 +264,7 @@ export type offlineJuryRoundWhereInput = {
   OR?: Prisma.offlineJuryRoundWhereInput[]
   NOT?: Prisma.offlineJuryRoundWhereInput | Prisma.offlineJuryRoundWhereInput[]
   teamId?: Prisma.IntFilter<"offlineJuryRound"> | number
+  uploadedBy?: Prisma.StringFilter<"offlineJuryRound"> | string
   teamName?: Prisma.StringFilter<"offlineJuryRound"> | string
   presentation?: Prisma.IntFilter<"offlineJuryRound"> | number
   innovationMarks?: Prisma.IntFilter<"offlineJuryRound"> | number
@@ -268,6 +276,7 @@ export type offlineJuryRoundWhereInput = {
 
 export type offlineJuryRoundOrderByWithRelationInput = {
   teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -283,6 +292,7 @@ export type offlineJuryRoundWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.offlineJuryRoundWhereInput | Prisma.offlineJuryRoundWhereInput[]
   OR?: Prisma.offlineJuryRoundWhereInput[]
   NOT?: Prisma.offlineJuryRoundWhereInput | Prisma.offlineJuryRoundWhereInput[]
+  uploadedBy?: Prisma.StringFilter<"offlineJuryRound"> | string
   presentation?: Prisma.IntFilter<"offlineJuryRound"> | number
   innovationMarks?: Prisma.IntFilter<"offlineJuryRound"> | number
   technicalComplexity?: Prisma.IntFilter<"offlineJuryRound"> | number
@@ -293,6 +303,7 @@ export type offlineJuryRoundWhereUniqueInput = Prisma.AtLeast<{
 
 export type offlineJuryRoundOrderByWithAggregationInput = {
   teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -312,6 +323,7 @@ export type offlineJuryRoundScalarWhereWithAggregatesInput = {
   OR?: Prisma.offlineJuryRoundScalarWhereWithAggregatesInput[]
   NOT?: Prisma.offlineJuryRoundScalarWhereWithAggregatesInput | Prisma.offlineJuryRoundScalarWhereWithAggregatesInput[]
   teamId?: Prisma.IntWithAggregatesFilter<"offlineJuryRound"> | number
+  uploadedBy?: Prisma.StringWithAggregatesFilter<"offlineJuryRound"> | string
   teamName?: Prisma.StringWithAggregatesFilter<"offlineJuryRound"> | string
   presentation?: Prisma.IntWithAggregatesFilter<"offlineJuryRound"> | number
   innovationMarks?: Prisma.IntWithAggregatesFilter<"offlineJuryRound"> | number
@@ -323,6 +335,7 @@ export type offlineJuryRoundScalarWhereWithAggregatesInput = {
 
 export type offlineJuryRoundCreateInput = {
   teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -334,6 +347,7 @@ export type offlineJuryRoundCreateInput = {
 
 export type offlineJuryRoundUncheckedCreateInput = {
   teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -345,6 +359,7 @@ export type offlineJuryRoundUncheckedCreateInput = {
 
 export type offlineJuryRoundUpdateInput = {
   teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -356,6 +371,7 @@ export type offlineJuryRoundUpdateInput = {
 
 export type offlineJuryRoundUncheckedUpdateInput = {
   teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -367,6 +383,7 @@ export type offlineJuryRoundUncheckedUpdateInput = {
 
 export type offlineJuryRoundCreateManyInput = {
   teamId: number
+  uploadedBy: string
   teamName: string
   presentation: number
   innovationMarks: number
@@ -378,6 +395,7 @@ export type offlineJuryRoundCreateManyInput = {
 
 export type offlineJuryRoundUpdateManyMutationInput = {
   teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -389,6 +407,7 @@ export type offlineJuryRoundUpdateManyMutationInput = {
 
 export type offlineJuryRoundUncheckedUpdateManyInput = {
   teamId?: Prisma.IntFieldUpdateOperationsInput | number
+  uploadedBy?: Prisma.StringFieldUpdateOperationsInput | string
   teamName?: Prisma.StringFieldUpdateOperationsInput | string
   presentation?: Prisma.IntFieldUpdateOperationsInput | number
   innovationMarks?: Prisma.IntFieldUpdateOperationsInput | number
@@ -400,6 +419,7 @@ export type offlineJuryRoundUncheckedUpdateManyInput = {
 
 export type offlineJuryRoundCountOrderByAggregateInput = {
   teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -421,6 +441,7 @@ export type offlineJuryRoundAvgOrderByAggregateInput = {
 
 export type offlineJuryRoundMaxOrderByAggregateInput = {
   teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -432,6 +453,7 @@ export type offlineJuryRoundMaxOrderByAggregateInput = {
 
 export type offlineJuryRoundMinOrderByAggregateInput = {
   teamId?: Prisma.SortOrder
+  uploadedBy?: Prisma.SortOrder
   teamName?: Prisma.SortOrder
   presentation?: Prisma.SortOrder
   innovationMarks?: Prisma.SortOrder
@@ -455,6 +477,7 @@ export type offlineJuryRoundSumOrderByAggregateInput = {
 
 export type offlineJuryRoundSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -466,6 +489,7 @@ export type offlineJuryRoundSelect<ExtArgs extends runtime.Types.Extensions.Inte
 
 export type offlineJuryRoundSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -477,6 +501,7 @@ export type offlineJuryRoundSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
 
 export type offlineJuryRoundSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -488,6 +513,7 @@ export type offlineJuryRoundSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
 
 export type offlineJuryRoundSelectScalar = {
   teamId?: boolean
+  uploadedBy?: boolean
   teamName?: boolean
   presentation?: boolean
   innovationMarks?: boolean
@@ -497,13 +523,14 @@ export type offlineJuryRoundSelectScalar = {
   totalMarks?: boolean
 }
 
-export type offlineJuryRoundOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"teamId" | "teamName" | "presentation" | "innovationMarks" | "technicalComplexity" | "marketFeasibility" | "futureScope" | "totalMarks", ExtArgs["result"]["offlineJuryRound"]>
+export type offlineJuryRoundOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"teamId" | "uploadedBy" | "teamName" | "presentation" | "innovationMarks" | "technicalComplexity" | "marketFeasibility" | "futureScope" | "totalMarks", ExtArgs["result"]["offlineJuryRound"]>
 
 export type $offlineJuryRoundPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "offlineJuryRound"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     teamId: number
+    uploadedBy: string
     teamName: string
     presentation: number
     innovationMarks: number
@@ -935,6 +962,7 @@ export interface Prisma__offlineJuryRoundClient<T, Null = never, ExtArgs extends
  */
 export interface offlineJuryRoundFieldRefs {
   readonly teamId: Prisma.FieldRef<"offlineJuryRound", 'Int'>
+  readonly uploadedBy: Prisma.FieldRef<"offlineJuryRound", 'String'>
   readonly teamName: Prisma.FieldRef<"offlineJuryRound", 'String'>
   readonly presentation: Prisma.FieldRef<"offlineJuryRound", 'Int'>
   readonly innovationMarks: Prisma.FieldRef<"offlineJuryRound", 'Int'>
