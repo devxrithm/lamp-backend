@@ -9,7 +9,6 @@ const _config = {
   REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_EXPIRY: process.env.REFRESH_TOKEN_EXPIRY,
   PORT : process.env.PORT,
-  KAFKA_CERT:process.env.KAFKA_CERT,
   CORS_URL:process.env.CORS_URL
 };
 
